@@ -1,0 +1,301 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: linear-gradient(135deg, #15152e, #43266b);
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* TITULOS */
+h1 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+p {
+    color: #c4b5fd;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* ESTADISTICAS */
+.estadisticas {
+    display: flex;
+    justify-content: space-around;
+    width: min(90%, 400px);
+    margin-bottom: 20px;
+    color: white;
+}
+
+.estadisticas div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.estadisticas strong {
+    color: #a78bfa;
+    font-size: 22px;
+}
+
+/* TABLERO */
+.tablero {
+    width: min(90vw, 650px);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* CARTAS */
+.tarjeta {
+    aspect-ratio: 1 / 1;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    perspective: 1000px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ANIMACION DE GIRO */
+.tarjeta-interior {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.tarjeta.volteada .tarjeta-interior {
+    transform: rotateY(180deg);
+}
+
+/* CARAS DE LAS CARTAS */
+.cara {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 12px;
+    font-size: clamp(25px, 5vw, 42px);
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* PARTE DELANTERA */
+.frente {
+    background: #6546c7;
+    border: 2px solid #8b70e5;
+    color: white;
+}
+
+/* PARTE TRASERA */
+.atras {
+    background: white;
+    border: 2px solid #a78bfa;
+    transform: rotateY(180deg);
+}
+
+/* PAREJAS ENCONTRADAS */
+.tarjeta.correcta {
+    cursor: default;
+    pointer-events: none;
+}
+
+.tarjeta.correcta .atras {
+    background: #168b69;
+    border-color: #35d6a4;
+}
+
+/* BOTON REINICIAR */
+.boton-reiniciar {
+    width: min(90%, 320px);
+    padding: 14px;
+    margin-top: 20px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #a78bfa;
+    color: #17152e;
+
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.boton-reiniciar:hover {
+    background: #c4b5fd;
+}
+
+/* MENSAJE DE VICTORIA */
+#mensaje {
+    color: #4ade80;
+    font-weight: bold;
+    margin-top: 12px;
+    min-height: 20px;
+}
+
+
+/* =================================
+   COMPUTADORAS Y PANTALLAS GRANDES
+================================= */
+
+@media (min-width: 601px) {
+
+    .contenedor {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    .estadisticas {
+        width: 500px;
+        margin-bottom: 30px;
+    }
+
+    .estadisticas span {
+        font-size: 18px;
+    }
+
+    .estadisticas strong {
+        font-size: 30px;
+    }
+
+    .tablero {
+        width: min(85vw, 850px);
+        gap: 20px;
+    }
+
+    .cara {
+        font-size: 65px;
+        border-radius: 18px;
+    }
+
+    .boton-reiniciar {
+        width: 350px;
+        padding: 18px;
+        margin-top: 30px;
+        font-size: 19px;
+    }
+
+    #mensaje {
+        font-size: 20px;
+    }
+}
+
+
+/* =================================
+   CELULARES
+================================= */
+
+@media (max-width: 600px) {
+
+    .contenedor {
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .estadisticas {
+        margin-bottom: 15px;
+    }
+
+    .tablero {
+        width: min(88vw, 48vh, 440px);
+        gap: 9px;
+    }
+
+    .cara {
+        font-size: clamp(28px, 8vw, 42px);
+        border-radius: 10px;
+    }
+
+    .boton-reiniciar {
+        width: 90%;
+        padding: 15px;
+        margin-top: 15px;
+    }
+}
+
+/* =================================
+   CELULARES CON POCA ALTURA
+================================= */
+
+@media (max-height: 700px) {
+
+    .contenedor {
+        padding: 6px;
+    }
+
+    h1 {
+        font-size: 21px;
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin-bottom: 8px;
+    }
+
+    .estadisticas {
+        margin-bottom: 8px;
+    }
+
+    .tablero {
+        width: min(85vw, 43vh, 400px);
+    }
+
+    .boton-reiniciar {
+        margin-top: 8px;
+        padding: 10px;
+    }
+}
+

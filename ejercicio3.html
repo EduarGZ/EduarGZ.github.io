@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>Juego de Memoria</title>
+
+    <link rel="stylesheet" href="estilos3.css">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>🧠 Juego de Memoria</h1>
+
+        <p>Encuentra todas las parejas iguales</p>
+
+        <div class="estadisticas">
+
+            <div>
+                <span>Movimientos</span>
+                <strong id="movimientos">0</strong>
+            </div>
+
+            <div>
+                <span>Parejas</span>
+                <strong id="parejas">0 / 8</strong>
+            </div>
+
+        </div>
+
+        <div class="tablero" id="tablero"></div>
+
+        <div id="mensaje"></div>
+
+        <button class="boton-reiniciar" onclick="reiniciarJuego()">
+            Reiniciar juego
+        </button>
+
+    </div>
+
+    <script src="funciones3.js"></script>
+
+</body>
+</html>
